@@ -9,8 +9,6 @@ public class ChooseManager : MonoBehaviour
     private List<PlayerController> playerList;
 
     private int randomIndex;
-
-    private bool isChoose;
     private void Awake()
     {
         allPlayers = FindObjectsOfType<PlayerController>();
