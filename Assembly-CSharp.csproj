@@ -58,6 +58,10 @@
     <Compile Include="Assets\Scripts\ColorManager.cs" />
     <Compile Include="Assets\Scripts\PlayerAnimationController.cs" />
     <Compile Include="Assets\Scripts\Ground.cs" />
+    <Compile Include="Assets\Scripts\PlayerTrigger.cs" />
+    <Compile Include="Assets\Scripts\IInteractable.cs" />
+    <Compile Include="Assets\Scripts\Floor.cs" />
+    <Compile Include="Assets\Scripts\CameraManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -659,6 +663,12 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

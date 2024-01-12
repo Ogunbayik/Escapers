@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ground : MonoBehaviour
+public class Ground : MonoBehaviour , IInteractable
 {
     private enum FloorType
     {
@@ -46,6 +46,7 @@ public class Ground : MonoBehaviour
                 var randomColorIndex = Random.Range(0, colorList.Count);
                 var floorMesh = floors[0].GetComponent<MeshRenderer>();
                 floorMesh.material.color = colorList[randomColorIndex];
+
                 break;
             case FloorType.Two:
                 var randomIndex = Random.Range(0, colorList.Count);
@@ -89,18 +90,22 @@ public class Ground : MonoBehaviour
         switch(randomRoteteIndex)
         {
             case 0:
-                transform.rotation = Quaternion.Euler(Vector3.zero);
+                transform.rotation = Quaternion.Euler(new Vector3(-90, 0, 0));
                 break;
             case 1:
-                transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+                transform.rotation = Quaternion.Euler(new Vector3(-90, 90, 0));
                 break;
             case 2:
-                transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                transform.rotation = Quaternion.Euler(new Vector3(-90, 180, 0));
                 break;
             case 3:
-                transform.rotation = Quaternion.Euler(new Vector3(0, 270, 0));
+                transform.rotation = Quaternion.Euler(new Vector3(-90, 270, 0));
                 break;
         }
 
+    }
+    public void Interact()
+    {
+        Debug.Log("Interact");
     }
 }

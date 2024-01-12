@@ -78,4 +78,8 @@ public class PlayerController : MonoBehaviour
         animationController.SadIdleAnimation(isChoosed);
     }
 
+    public bool IsChoosed()
+    {
+        return isChoosed;
+    }
 }
