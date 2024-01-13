@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ChooseManager : MonoBehaviour
 {
+    public event EventHandler OnSwitchPlayer;
+
     [SerializeField] private PlayerController[] allPlayers;
 
     private List<PlayerController> playerList;
@@ -24,12 +27,13 @@ public class ChooseManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             SwitchPlayer();
+            OnSwitchPlayer(this, EventArgs.Empty);
         }
     }
 
     private void ChooseStartingRandomPlayer()
     {
-        randomIndex = Random.Range(0, allPlayers.Length);
+        randomIndex = UnityEngine.Random.Range(0, allPlayers.Length);
 
         for (int i = 0; i < allPlayers.Length; i++)
         {

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerTrigger : MonoBehaviour
 {
+    public event EventHandler OnRightFloor;
+
     private SkinnedMeshRenderer meshRenderer;
 
     private Floor floor;
@@ -44,14 +47,20 @@ public class PlayerTrigger : MonoBehaviour
         floorColor = floor.GetColor();
 
         if (playerColor == floorColor)
-            Debug.Log("True");
+        {
+            floor.ChangeActivate(true);
+            OnRightFloor(this, EventArgs.Empty);
+        }
         else
-            Debug.Log("False");
+        {
+            Debug.Log("Find true Player");
+        }
 
     }
 
     private void OnTriggerExit(Collider other)
     {
+        floor.ChangeActivate(false);
         floor = null;
     }
 

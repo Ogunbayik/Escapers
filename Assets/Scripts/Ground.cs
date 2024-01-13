@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ground : MonoBehaviour , IInteractable
+public class Ground : MonoBehaviour 
 {
     private enum FloorType
     {
@@ -13,6 +13,7 @@ public class Ground : MonoBehaviour , IInteractable
     [Header(" Settings ")]
     [SerializeField] private FloorType floorType;
     [SerializeField] private GameObject[] floors;
+    [SerializeField] private DoorLight[] doorLights;
 
     [SerializeField] private List<MeshRenderer> floorsRendererList;
     private List<Color> colorList;
@@ -29,6 +30,18 @@ public class Ground : MonoBehaviour , IInteractable
         StartFloorColor();
 
         StartRandomRotation();
+    }
+
+    private void Update()
+    {
+        for (int i = 0; i < floors.Length; i++)
+        {
+           if(floors[i].GetComponent<Floor>().IsActive())
+            {
+                Debug.Log("Floor can open the door");
+            }
+
+        }
     }
     private void AddColors()
     {
@@ -103,9 +116,5 @@ public class Ground : MonoBehaviour , IInteractable
                 break;
         }
 
-    }
-    public void Interact()
-    {
-        Debug.Log("Interact");
     }
 }

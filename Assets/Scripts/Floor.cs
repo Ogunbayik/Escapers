@@ -10,10 +10,14 @@ public class Floor : MonoBehaviour
 
     private float changeMaxTimer = 0.1f;
     private float changeTimer = 0;
-    private bool isChanged;
+
+    private bool isActive;
+    private bool isColorChanged;
+    
     private void Awake()
     {
-        isChanged = false;
+        isColorChanged = false;
+        isActive = false;
 
         meshRenderer = GetComponent<MeshRenderer>();
     }
@@ -25,14 +29,14 @@ public class Floor : MonoBehaviour
 
     private void UpdateFloorColor()
     {
-        if (isChanged == false)
+        if (isColorChanged == false)
         {
             changeTimer += Time.deltaTime;
 
             if (changeTimer >= changeMaxTimer)
             {
                 floorColor = meshRenderer.material.color;
-                isChanged = true;
+                isColorChanged = true;
             }
         }
     }
@@ -40,6 +44,16 @@ public class Floor : MonoBehaviour
     public Color GetColor()
     {
         return floorColor;
+    }
+
+    public void ChangeActivate(bool isActive)
+    {
+        this.isActive = isActive;
+    }
+
+    public bool IsActive()
+    {
+        return isActive;
     }
 
 }
